@@ -4,44 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_image_picker/flutter_web_image_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
-class _SpotState extends State<Spot> {
-  final position = TextEditingController();
-  final time = TextEditingController();
-  Image img;
-
+class PlanNewTripScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // return Text('Destination: ', style: Theme.of(context).textTheme.bodyText1);
-    return Column(children: [
-      TextFormField(
-          controller: position,
-          decoration: InputDecoration(
-              icon: Icon(Icons.location_on), hintText: 'Where')),
-      TextFormField(
-          controller: time,
-          decoration: InputDecoration(
-              icon: Icon(Icons.access_time), hintText: 'Estimated time spent')),
-      ImagePickerAndShower(),
-      getDownWardChevron(),
-    ]);
-    // return Container(
-    //     width: 200,
-    //     decoration: BoxDecoration(
-    //       border: Border.all(
-    //         color: Colors.black12,
-    //         width: 5,
-    //       ),
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //     child: Column(children: [
-    //       TextFormField(
-    //           controller: position,
-    //           decoration: InputDecoration(hintText: 'Where')),
-    //       TextFormField(
-    //           controller: time,
-    //           decoration: InputDecoration(hintText: 'Estimated time spent')),
-    //       ImagePickAndShower()
-    //     ]));
+    return Scaffold(
+        appBar: AppBar(title: Text("Plan a NEW Trip"), actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.upload_outlined,
+                // size: 40,
+              ),
+              onPressed: () {
+                _submit(context);
+              }),
+        ]),
+        body: Padding(
+          padding: EdgeInsets.all(60.0),
+          child: PlanNewTripForm(),
+        ));
+  }
+
+  void _submit(context) {
+    Navigator.pop(context);
   }
 }
 
@@ -77,58 +61,48 @@ class _PlanNewTripFormState extends State<PlanNewTripForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          LinearProgressIndicator(value: _formProgress),
-          ...spots,
-          IconButton(
-              icon: Icon(
-                Icons.add_location,
-              ),
-              iconSize: 50,
-              onPressed: _addNewSpot),
-          TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
-                return states.contains(MaterialState.disabled)
-                    ? null
-                    : Colors.white;
-              }),
-              backgroundColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
-                return states.contains(MaterialState.disabled)
-                    ? null
-                    : Colors.blue;
-              }),
-            ),
-            onPressed: null,
-            child: Text('Submit'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _submit() {
-    Navigator.pop(context);
+    return ListView.builder(
+        padding: EdgeInsets.all(16.0),
+        itemBuilder: /*1*/ (context, i) {
+          if (i < spots.length) {
+            return ListTile(title: spots[i]);
+          } else if (i == spots.length) {
+            return ListTile(
+                title: IconButton(
+                    icon: Icon(
+                      Icons.add_location_alt_outlined,
+                    ),
+                    iconSize: 50,
+                    color: Colors.blueGrey.shade700,
+                    onPressed: _addNewSpot));
+          } else {
+            return null;
+          }
+        });
   }
 }
 
-Widget getDownWardChevron() {
-  return Transform(
-    transform: Matrix4.diagonal3Values(2, 1.0, 1.0),
-    origin: Offset(50, 0),
-    child: Transform.rotate(
-        angle: 3.14 / 2,
-        child: Icon(
-          Icons.chevron_right_rounded,
-          size: 100,
-          color: Colors.black26,
-        )),
-  );
+class _SpotState extends State<Spot> {
+  final position = TextEditingController();
+  final time = TextEditingController();
+  Image img;
+
+  @override
+  Widget build(BuildContext context) {
+    // return Text('Destination: ', style: Theme.of(context).textTheme.bodyText1);
+    return Column(children: [
+      TextFormField(
+          controller: position,
+          decoration: InputDecoration(
+              icon: Icon(Icons.location_on), hintText: 'Where')),
+      TextFormField(
+          controller: time,
+          decoration: InputDecoration(
+              icon: Icon(Icons.access_time), hintText: 'Estimated time spent')),
+      ImagePickerAndShower(),
+      getDownWardChevron(),
+    ]);
+  }
 }
 
 class _ImagePickerAndShowerState extends State<ImagePickerAndShower> {
@@ -144,7 +118,7 @@ class _ImagePickerAndShowerState extends State<ImagePickerAndShower> {
         child: Icon(
           Icons.add_a_photo_outlined,
           size: size * 0.7,
-          color: Colors.black26,
+          color: Colors.brown.shade300,
         ),
         onTap: _pickImage,
       ),
@@ -195,6 +169,20 @@ class _ImagePickerAndShowerState extends State<ImagePickerAndShower> {
   }
 }
 
+Widget getDownWardChevron() {
+  return Transform(
+    transform: Matrix4.diagonal3Values(2, 1.0, 1.0),
+    origin: Offset(50, 0),
+    child: Transform.rotate(
+        angle: 3.14 / 2,
+        child: Icon(
+          Icons.chevron_right_rounded,
+          size: 100,
+          color: Colors.black26,
+        )),
+  );
+}
+
 class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
@@ -241,20 +229,6 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
         backgroundColor: _colorAnimation.value.withOpacity(0.4),
       ),
     );
-  }
-}
-
-class PlanNewTripScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Plan a new trip"),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: PlanNewTripForm(),
-        ));
   }
 }
 

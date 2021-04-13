@@ -33,6 +33,12 @@ class _TabNavigatorState extends State<TabNavigator> {
         controller: _controller,
         children: <Widget>[
           Plaza(),
+          Container(
+            color: Colors.purple.shade100,
+          ),
+          Container(
+            color: Colors.green.shade100,
+          ),
           //SearchPage(
           //  hideLeft: true,
           //),
