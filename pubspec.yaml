@@ -23,6 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  image_picker:
+    
+  flutter_web_image_picker:
 
   package_info: ^0.4.0+6
   flutter_splash_screen: ^0.1.0
