@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_splash_screen/flutter_splash_screen.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hackust_traveling/Pages/plaza_page.dart';
-
-import 'package:package_info/package_info.dart';
-
-import 'package:hackust_traveling/Pages/home_page.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
