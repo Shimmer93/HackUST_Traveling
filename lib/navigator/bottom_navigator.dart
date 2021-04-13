@@ -5,6 +5,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:package_info/package_info.dart';
 
 import 'package:hackust_traveling/Pages/home_page.dart';
+import 'package:hackust_traveling/Pages/camera_page.dart';
+import 'package:hackust_traveling/Pages/my_page.dart';
+import 'package:hackust_traveling/Pages/new_page.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -45,7 +48,7 @@ class _TabNavigatorState extends State<TabNavigator> {
     if (_lastPressedAt == null ||
         DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
       Fluttertoast.showToast(
-          msg: "再按一次退出应用",
+          msg: "click the back button again to exit",
           backgroundColor: Colors.grey,
           toastLength: Toast.LENGTH_SHORT,
           fontSize: 14);
@@ -89,20 +92,22 @@ class _TabNavigatorState extends State<TabNavigator> {
           child: PageView(
             physics: NeverScrollableScrollPhysics(),
             controller: _controller,
-            children: <Widget>[
+            /*children: <Widget>[
               //SearchPage(
               //  hideLeft: true,
               //),
               //TravelPage(),
               //MyPage(),
-            ],
-            /*onPageChanged: (index) {
+            ],*/
+            children: [NewPage(), HomePage(), CameraPage(), MyPage()],
+            onPageChanged: (index) {
           setState(() {
             _currentIndex = index;
           });
-        },*/
+        },
           ),
           onWillPop: exitApp),
+      //body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           selectedFontSize: 12,
           unselectedFontSize: 12,

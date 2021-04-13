@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class CameraPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("廣場"),
+      child: Text("相機"),
     );
   }
 }
