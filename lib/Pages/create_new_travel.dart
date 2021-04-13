@@ -4,30 +4,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_image_picker/flutter_web_image_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
-class NewTravelPlanScreen extends StatelessWidget {
+class _SpotState extends State<Spot> {
+  final position = TextEditingController();
+  final time = TextEditingController();
+  Image img;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("New travel plan"),
+    // return Text('Destination: ', style: Theme.of(context).textTheme.bodyText1);
+    return Container(
+        width: 200,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black12,
+            width: 5,
+          ),
+          borderRadius: BorderRadius.circular(10),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: TravelPlanForm(),
-        ));
+        child: Column(children: [
+          TextFormField(
+              controller: position,
+              decoration: InputDecoration(hintText: 'Where')),
+          TextFormField(
+              controller: time,
+              decoration: InputDecoration(hintText: 'Estimated time spent')),
+        ]));
   }
 }
 
-class TravelPlanForm extends StatefulWidget {
-  @override
-  _TravelPlanFormState createState() => _TravelPlanFormState();
-}
-
 class _TravelPlanFormState extends State<TravelPlanForm> {
+  final spots = [];
+
   // var texts = Map();
 
   void initState() {
     super.initState();
+    spots.add(Spot());
+    spots.add(Spot());
   }
 
   // double _formProgress = 0;
@@ -48,6 +61,13 @@ class _TravelPlanFormState extends State<TravelPlanForm> {
   var position = TextEditingController();
 
   double _formProgress = 0;
+
+  void _addNewSpot() {
+    setState(() {
+      spots.add(Spot());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -55,6 +75,8 @@ class _TravelPlanFormState extends State<TravelPlanForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           LinearProgressIndicator(value: _formProgress),
+          ...spots,
+          IconButton(icon: Icon(Icons.add_location), onPressed: _addNewSpot),
           TextButton(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.resolveWith(
@@ -83,16 +105,53 @@ class _TravelPlanFormState extends State<TravelPlanForm> {
   }
 }
 
-class AnimatedProgressIndicator extends StatefulWidget {
-  final double value;
+class _ImagePickAndShowerState extends State<ImagePickAndShower> {
+  Image image;
 
-  AnimatedProgressIndicator({
-    @required this.value,
-  });
+  _pickImage() async {
+    Image img;
+    if (kIsWeb) {
+      img = await FlutterWebImagePicker.getImage;
+    } else {
+      PickedFile pickedFile = await ImagePicker().getImage(
+        source: ImageSource.gallery,
+        maxWidth: 64,
+        maxHeight: 64,
+      );
+      img = Image.file(
+        File(pickedFile.path),
+      );
+    }
+
+    if (img != null) {
+      setState(() {
+        image = img;
+      });
+    }
+  }
 
   @override
-  State<StatefulWidget> createState() {
-    return _AnimatedProgressIndicatorState();
+  Widget build(BuildContext context) {
+    return image != null
+        ? image
+        : TextButton(
+            style: ButtonStyle(
+              foregroundColor:
+                  MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.white;
+              }),
+              backgroundColor:
+                  MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.blue;
+              }),
+            ),
+            onPressed: _pickImage,
+            child: Text('Pick Image'),
+          );
   }
 }
 
@@ -145,13 +204,44 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
   }
 }
 
-class WelcomeScreen extends StatelessWidget {
+class NewTravelPlanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Welcome!', style: Theme.of(context).textTheme.headline2),
-      ),
-    );
+        appBar: AppBar(
+          title: Text("New travel plan"),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: TravelPlanForm(),
+        ));
+  }
+}
+
+class TravelPlanForm extends StatefulWidget {
+  @override
+  _TravelPlanFormState createState() => _TravelPlanFormState();
+}
+
+class Spot extends StatefulWidget {
+  @override
+  _SpotState createState() => _SpotState();
+}
+
+class ImagePickAndShower extends StatefulWidget {
+  @override
+  _ImagePickAndShowerState createState() => _ImagePickAndShowerState();
+}
+
+class AnimatedProgressIndicator extends StatefulWidget {
+  final double value;
+
+  AnimatedProgressIndicator({
+    @required this.value,
+  });
+
+  @override
+  State<StatefulWidget> createState() {
+    return _AnimatedProgressIndicatorState();
   }
 }
