@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:hackust_traveling/Pages/plaza_page.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -116,18 +117,15 @@ class _TabNavigatorState extends State<TabNavigator> {
   //底部导航item
   BottomNavigationBarItem _bottomItem(IconData icon, String title, int index) {
     return BottomNavigationBarItem(
-        icon: Icon(
-          icon,
-          color: _defaultColor,
-        ),
-        activeIcon: Icon(
-          icon,
-          color: _activeColor,
-        ),
-        title: Text(
-          title,
-          style: TextStyle(
-              color: _currentIndex != index ? _defaultColor : _activeColor),
-        ));
+      icon: Icon(
+        icon,
+        color: _defaultColor,
+      ),
+      activeIcon: Icon(
+        icon,
+        color: _activeColor,
+      ),
+      label: title,
+    );
   }
 }
