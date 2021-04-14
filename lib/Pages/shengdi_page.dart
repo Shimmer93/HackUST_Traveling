@@ -11,14 +11,13 @@ class ShengdiPage extends StatefulWidget {
 }
 
 class ShengdiPageState extends State<ShengdiPage> {
-
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kHKUST = CameraPosition(
     target: LatLng(22.336723798600985, 114.26543382416752),
     zoom: 14.4746,
   );
-  
+
   final Set<Marker> _markers = Set();
 
   Future<void> _displayDetail(BuildContext context, ShengdiInfo info) async {
@@ -28,17 +27,21 @@ class ShengdiPageState extends State<ShengdiPage> {
     );
   }
 
-  Marker _createMarker(BuildContext context, ShengdiInfo info){
-    return Marker(markerId: MarkerId(info.title), position: info.latLng, consumeTapEvents: true, onTap: (){_displayDetail(context, info);});
+  Marker _createMarker(BuildContext context, ShengdiInfo info) {
+    return Marker(
+        markerId: MarkerId(info.title),
+        position: info.latLng,
+        consumeTapEvents: true,
+        onTap: () {
+          _displayDetail(context, info);
+        });
   }
 
   @override
   Widget build(BuildContext context) {
-    _markers.add(_createMarker(context, shengdiData[0]));
-    _markers.add(_createMarker(context, shengdiData[1]));
-    _markers.add(_createMarker(context, shengdiData[2]));
-    _markers.add(_createMarker(context, shengdiData[3]));
-    _markers.add(_createMarker(context, shengdiData[4]));
+    shengdiData.forEach((element) {
+      _markers.add(_createMarker(context, element));
+    });
     return new Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
