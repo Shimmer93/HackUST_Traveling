@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/services.dart';
 import 'dart:io';
+import 'package:simple_permissions/simple_permissions.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image/image.dart' as img;
 import 'package:hackust_traveling/globals.dart' as globals;
@@ -153,8 +154,12 @@ class DisplayPictureScreen extends StatelessWidget {
 
 
   void save(String originPath) async {
-    final result = await ImageGallerySaver.saveImage(File(originPath).readAsBytesSync());
-    print(result);
+    PermissionStatus permissionResult = await SimplePermissions.requestPermission(Permission.WriteExternalStorage);
+    if (permissionResult == PermissionStatus.authorized) {
+      final result = await ImageGallerySaver.saveImage(
+          File(originPath).readAsBytesSync());
+      print(result);
+    }
   }
   @override
   Widget build(BuildContext context) {
