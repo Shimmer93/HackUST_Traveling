@@ -52,8 +52,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/Pak_Shing_Temple_cardcaptor_sakura_the_movie.png
-    - assets/images/htc_logo.jpg
     - assets/images/filter_Pak_Shing_Temple_cardcaptor_sakura_the_movie.png
   # To add assets to your application, add an assets section, like this:
   # assets:
