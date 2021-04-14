@@ -36,6 +36,7 @@ class _TabNavigatorState extends State<TabNavigator> {
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
         children: <Widget>[
+          ShengdiPage(),
           Plaza(),
           CameraPage(),
           Container(
