@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_image_picker/flutter_web_image_picker.dart';
+// import 'package:image_picker_for_web/image_picker_for_web.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PlanNewTripScreen extends StatelessWidget {
@@ -51,7 +51,7 @@ class _PlanNewTripFormState extends State<PlanNewTripForm> {
   // }
   var position = TextEditingController();
 
-  double _formProgress = 0;
+  // double _formProgress = 0;
 
   void _addNewSpot() {
     setState(() {
@@ -135,16 +135,12 @@ class _ImagePickerAndShowerState extends State<ImagePickerAndShower> {
 
   _pickImage() async {
     Image img;
-    if (kIsWeb) {
-      img = await FlutterWebImagePicker.getImage;
-    } else {
-      PickedFile pickedFile = await ImagePicker().getImage(
-        source: ImageSource.gallery,
-      );
-      img = Image.file(
-        File(pickedFile.path),
-      );
-    }
+    PickedFile pickedFile = await ImagePicker().getImage(
+      source: ImageSource.gallery,
+    );
+    img = kIsWeb
+        ? Image.network(pickedFile.path)
+        : Image.file(File(pickedFile.path));
 
     setState(() {
       images.add(img);

@@ -8,7 +8,7 @@ import 'package:hackust_traveling/globals.dart' as globals;
 class CameraPage extends StatefulWidget {
   final CameraDescription camera = globals.camera;
 
- /* const CameraPage({
+  /* const CameraPage({
     Key key,
     @required this.camera,
   }) : super(key: key);*/
@@ -108,6 +108,7 @@ class CameraPageState extends State<CameraPage> {
     );
   }
 }
+
 // A widget that displays the picture taken by the user.
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;

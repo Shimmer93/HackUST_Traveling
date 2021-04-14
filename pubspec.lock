@@ -109,13 +109,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_web_image_picker:
-    dependency: "direct main"
-    description:
-      name: flutter_web_image_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -162,7 +155,7 @@ packages:
       name: image_picker_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.0"
   js:
     dependency: transitive
     description:
@@ -233,6 +226,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.5"
+  pedantic:
+    dependency: transitive
+    description:
+      name: pedantic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.11.0"
   platform:
     dependency: transitive
     description:
@@ -265,7 +265,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.0"
   stack_trace:
     dependency: transitive
     description:
