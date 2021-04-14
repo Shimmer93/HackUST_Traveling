@@ -8,6 +8,7 @@ import 'package:hackust_traveling/Pages/home_page.dart';
 import 'package:hackust_traveling/Pages/camera_page.dart';
 import 'package:hackust_traveling/Pages/my_page.dart';
 import 'package:hackust_traveling/Pages/new_page.dart';
+import 'package:hackust_traveling/Pages/shengdi_page.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -99,7 +100,7 @@ class _TabNavigatorState extends State<TabNavigator> {
               //TravelPage(),
               //MyPage(),
             ],*/
-            children: [NewPage(), HomePage(), CameraPage(), MyPage()],
+            children: [ShengdiPage(), NewPage(), HomePage(), CameraPage(), MyPage()],
             onPageChanged: (index) {
           setState(() {
             _currentIndex = index;
@@ -120,10 +121,11 @@ class _TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           items: [
-            _bottomItem(Icons.add, 'New', 0),
-            _bottomItem(Icons.home, 'Plaza', 1),
-            _bottomItem(Icons.camera_alt, 'Cam', 2),
-            _bottomItem(Icons.account_circle, 'My', 3),
+            _bottomItem(Icons.map, 'Map', 0),
+            _bottomItem(Icons.add, 'New', 1),
+            _bottomItem(Icons.home, 'Plaza', 2),
+            _bottomItem(Icons.camera_alt, 'Cam', 3),
+            _bottomItem(Icons.account_circle, 'My', 4),
           ]),
     );
   }
