@@ -30,8 +30,10 @@ dependencies:
   fluttertoast: ^3.1.3
   dio: ^4.0.0
   camera: ^0.5.8
-  path_provider: ^1.6.21
+  path_provider: ^2.0.1
   path: ^1.7.0
+  image: ^3.0.2
+  image_gallery_saver: ^1.6.9
 
   image_picker: ^0.7.4
   # The following adds the Cupertino Icons font to your application.
@@ -55,6 +57,7 @@ flutter:
 
   assets:
     - assets/images/filter_Pak_Shing_Temple_cardcaptor_sakura_the_movie.png
+    - assets/images/Pak_Shing_Temple_cardcaptor_sakura_the_movie.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_ham.jpeg
