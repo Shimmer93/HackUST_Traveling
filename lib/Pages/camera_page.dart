@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:hackust_traveling/globals.dart' as globals;
 
@@ -53,6 +54,10 @@ class CameraPageState extends State<CameraPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       appBar: AppBar(title: Text('Take a picture')),
       // Wait until the controller is initialized before displaying the
@@ -63,13 +68,28 @@ class CameraPageState extends State<CameraPage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the preview.
-            return CameraPreview(_controller);
+            //return CameraPreview(_controller);
+            return new Stack(
+              alignment: FractionalOffset.center,
+              children: <Widget>[
+                new Positioned.fill(child: new AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: new CameraPreview(_controller))),
+                new Positioned.fill(
+                    child: new Opacity(
+                      opacity: 0.9,
+                      child: new Image.asset(
+                        'assets/images/filter_Pak_Shing_Temple_cardcaptor_sakura_the_movie.png',
+                        fit: BoxFit.fill,)))
+              ]
+            );
           } else {
             // Otherwise, display a loading indicator.
             return Center(child: CircularProgressIndicator());
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.camera_alt),
         // Provide an onPressed callback.
