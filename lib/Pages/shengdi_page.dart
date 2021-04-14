@@ -21,24 +21,24 @@ class ShengdiPageState extends State<ShengdiPage> {
   
   static final Set<Marker> _markers = Set();
 
-  Future<void> _displayDetail(ShengdiInfo info) async {
+  Future<void> _displayDetail(BuildContext context, ShengdiInfo info) async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ShengdiDetailPage(info)),
     );
   }
 
-  Marker _createMarker(ShengdiInfo info){
-    return Marker(markerId: MarkerId(info.title), position: info.latLng, consumeTapEvents: true, onTap: (){_displayDetail(info);});
+  Marker _createMarker(BuildContext context, ShengdiInfo info){
+    return Marker(markerId: MarkerId(info.title), position: info.latLng, consumeTapEvents: true, onTap: (){_displayDetail(context, info);});
   }
 
   @override
   Widget build(BuildContext context) {
-    _markers.add(_createMarker(shengdiData[0]));
-    _markers.add(_createMarker(shengdiData[1]));
-    _markers.add(_createMarker(shengdiData[2]));
-    _markers.add(_createMarker(shengdiData[3]));
-    _markers.add(_createMarker(shengdiData[4]));
+    _markers.add(_createMarker(context, shengdiData[0]));
+    _markers.add(_createMarker(context, shengdiData[1]));
+    _markers.add(_createMarker(context, shengdiData[2]));
+    _markers.add(_createMarker(context, shengdiData[3]));
+    _markers.add(_createMarker(context, shengdiData[4]));
     return new Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
