@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackust_traveling/Pages/camera_page.dart';
 
 import 'package:hackust_traveling/Pages/plaza_page.dart';
 
@@ -34,9 +35,7 @@ class _TabNavigatorState extends State<TabNavigator> {
         controller: _controller,
         children: <Widget>[
           Plaza(),
-          Container(
-            color: Colors.purple.shade100,
-          ),
+          CameraPage(),
           Container(
             color: Colors.green.shade100,
           ),

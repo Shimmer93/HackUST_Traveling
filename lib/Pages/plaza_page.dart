@@ -12,8 +12,6 @@ class _PlazaState extends State<Plaza> {
     // return PlanNewTripScreen();
     return Scaffold(
       body: Container(
-        width: 50,
-        height: 50,
         color: Colors.amber.shade100,
       ),
       floatingActionButton: FloatingActionButton(
