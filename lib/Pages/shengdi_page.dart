@@ -19,7 +19,7 @@ class ShengdiPageState extends State<ShengdiPage> {
     zoom: 14.4746,
   );
   
-  static final Set<Marker> _markers = Set();
+  final Set<Marker> _markers = Set();
 
   Future<void> _displayDetail(BuildContext context, ShengdiInfo info) async {
     Navigator.push(
