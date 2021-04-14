@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackust_traveling/Pages/camera_page.dart';
-
+import 'package:hackust_traveling/Pages/my_page.dart';
+import 'package:hackust_traveling/Pages/shengdi_page.dart';
 import 'package:hackust_traveling/Pages/plaza_page.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -30,10 +31,12 @@ class _TabNavigatorState extends State<TabNavigator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
         children: <Widget>[
+          ShengdiPage(),
           Plaza(),
           CameraPage(),
           Container(
@@ -63,10 +66,10 @@ class _TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           items: [
-            // _bottomItem(Icons.add, 'New', 0),
-            _bottomItem(Icons.home, 'Plaza', 0),
-            _bottomItem(Icons.camera_alt, 'Cam', 1),
-            _bottomItem(Icons.account_circle, 'My', 2),
+            _bottomItem(Icons.map, 'Map', 0),
+            _bottomItem(Icons.home, 'Plaza', 1),
+            _bottomItem(Icons.camera_alt, 'Cam', 2),
+            _bottomItem(Icons.account_circle, 'My', 3),
           ]),
     );
   }
