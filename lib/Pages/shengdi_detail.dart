@@ -23,10 +23,12 @@ class ShengdiDetailPageState extends State<ShengdiDetailPage> {
     this.info = info;
   }
 
-  Future<void> _goToCameraPage(BuildContext context) async {
+  Future<void> _goToCameraPage(BuildContext context, int number) async {
+    print(number);
+    print('hello');
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => CameraPage()),
+      MaterialPageRoute(builder: (context) => CameraPage(filterSelect: number)),
     );
   }
 
@@ -54,7 +56,7 @@ class ShengdiDetailPageState extends State<ShengdiDetailPage> {
             )
         ),
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: (){_goToCameraPage(context);},
+            onPressed: (){_goToCameraPage(context, info.number);},
             label: Text("Take a photo"),
             icon: Icon(Icons.camera),
         )

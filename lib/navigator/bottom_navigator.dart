@@ -38,7 +38,7 @@ class _TabNavigatorState extends State<TabNavigator> {
         children: <Widget>[
           ShengdiPage(),
           Plaza(),
-          CameraPage(),
+          CameraPage(filterSelect: 0,),
           Container(
             color: Colors.green.shade100,
           ),
