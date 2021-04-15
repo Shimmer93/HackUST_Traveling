@@ -23,12 +23,12 @@ class ShengdiDetailPageState extends State<ShengdiDetailPage> {
     this.info = info;
   }
 
-  Future<void> _goToCameraPage(BuildContext context, String number) async {
+  Future<void> _goToCameraPage(BuildContext context, int number) async {
     print(number);
     print('hello');
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => CameraPage(filterSelect: 0)),
+      MaterialPageRoute(builder: (context) => CameraPage(filterSelect: number)),
     );
   }
 
