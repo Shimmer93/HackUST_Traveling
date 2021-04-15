@@ -3,6 +3,7 @@ import 'package:hackust_traveling/Pages/camera_page.dart';
 import 'package:hackust_traveling/Pages/my_page.dart';
 import 'package:hackust_traveling/Pages/shengdi_page.dart';
 import 'package:hackust_traveling/Pages/plaza_page.dart';
+import 'package:hackust_traveling/Pages/travel_page.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -42,11 +43,6 @@ class _TabNavigatorState extends State<TabNavigator> {
           Container(
             color: Colors.green.shade100,
           ),
-          //SearchPage(
-          //  hideLeft: true,
-          //),
-          //TravelPage(),
-          //MyPage(),
         ],
         onPageChanged: (index) {
           setState(() {
