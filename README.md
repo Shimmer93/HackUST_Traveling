@@ -56,9 +56,9 @@ After the environment setup, you can simply type the following command (e.g on I
         |
         `-- main.dart
     ```
-3. Our App's functions Can be divided into four parts:The first is the Plaza Page. 
-    <img src='Img/Plaza.png' width="25%" height="25%" >    
+3. Our App's functions Can be divided into four parts:The first is the Plaza Page.  
     1.(1) Within the Plaza, people can explore differnt Travel Plan posted by others and see how many people loves this plan.
+    <img src='Img/Plaza.png' width="25%" height="25%" >   
     1.(2) People can also change the tab bar on the top to `Group`. In the Group Page, Pople are able to see Group Forming information posted by other travellers. Then you are able to explore and join them.
     2. Forward, you can add a new plan by click the button on the right-bottom corner  
     <img src='Img/add_new.png' width="25%" height="25%" text-align: center>  
