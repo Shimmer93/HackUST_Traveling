@@ -7,7 +7,7 @@ class PlanNewTripScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Plan a NEW Trip"), actions: <Widget>[
+        appBar: AppBar(title: Text("Plan a NEW Itinerary"), actions: <Widget>[
           IconButton(
               icon: Icon(
                 Icons.upload_outlined,
@@ -31,23 +31,6 @@ class PlanNewTripScreen extends StatelessWidget {
 class _PlanNewTripFormState extends State<PlanNewTripForm> {
   var spots = [Spot(), Spot()];
 
-  // var texts = Map();
-
-  // double _formProgress = 0;
-
-  // void _updateFormProgress() {
-  //   var progress = 0.0;
-
-  //   for (var controller in texts.values) {
-  //     if (controller.value.text.isNotEmpty) {
-  //       progress += 1 / texts.length;
-  //     }
-  //   }
-
-  //   setState(() {
-  //     _formProgress = progress;
-  //   });
-  // }
   var position = TextEditingController();
 
   // double _formProgress = 0;
