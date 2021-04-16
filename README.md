@@ -14,7 +14,7 @@ Our App is build from `Flutter 2.0.4` and can operate on Ios, Android and Chrome
 Other dependencies are under `pubspec.yaml`.
 
 ## Quick Start
-After the environment setup, you can simply type the following command (e.g on Ios):
+After the environment setup, you can simply type the following command (e.g on iOS):
 
     ```shell
     # open the simulator
