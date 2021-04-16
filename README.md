@@ -56,7 +56,12 @@ After the environment setup, you can simply type the following command (e.g on I
         |
         `-- main.dart
     ```
-3. Our App's unctions Can be divided into four parts:
-    The first is the Plaza Page. ![Plaza](Img/Plaza.png)
-    Within the Plaza, people can explore differnt Travel Plan posted by others and see how many people loves this plan.
-    Then you can add a new plan by click the button on the right-bottom corner ![Add](Img/add_new.png)
+3. Our App's unctions Can be divided into four parts:    
+    The first is the Plaza Page. ![Plaza](Img/Plaza.png){zoom: 50%;}
+    1.(1) Within the Plaza, people can explore differnt Travel Plan posted by others and see how many people loves this plan.
+    1.(2) People can also change the tab bar on the top to `Group`. In the Group Page, Pople are able to see Group Forming information posted by other travellers. Then you are able to explore and join them.
+    2. Forward, you can add a new plan by click the button on the right-bottom corner ![Add](Img/add_new.png){zoom: 50%;}
+    3. You can Take wonderful pictures as described in our report. The UI is below.
+    ![Take](Img/Take.jpeg){zoom: 50%}
+    4. In addition, you can explore attractions in our map.
+    ![Map](Img/Map.png){zoom: 50%}
