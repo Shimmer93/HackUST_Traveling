@@ -62,7 +62,7 @@ After the environment setup, you can simply type the following command (e.g on i
     1.(2) People can also change the tab bar on the top to `Group`. In the Group Page, Pople are able to see Group Forming information posted by other travellers. Then you are able to explore and join them.
     2. Forward, you can add a new plan by click the button on the right-bottom corner  
     <img src='Img/add_new.png' width="25%" height="25%" text-align: center>  
-    3. You can Take wonderful pictures as described in our report. The UI is below.  
+    3. You can memorable pictures. Currently a static watermark is implemented.  
     <img src='Img/Take.jpeg' width="25%" height="25%" text-align: center>  
     4. In addition, you can explore attractions in our map.  
     <img src='Img/Map.png' width="25%" height="25%" text-align: center>
